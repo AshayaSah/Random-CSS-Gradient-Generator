@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(90deg, #107cf6 0%, #ffffff 100%);
+}
+
+.title{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.3rem;
+    padding: 20px;
+    color: #ffffff;
+
+text-shadow: 2px 2px 5px rgb(210, 241, 232),
+    -2px 2px 5px rgb(210, 241, 232),
+    -2px -2px 5px rgb(210, 241, 232),
+    2px -2px 5px rgb(210, 241, 232);
+}
+
+#container{
+    text-align: center;
+    padding: 10px;
+        /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.buttons{ 
+    height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button{
+    border-radius: 15px;
+    height: 35%;
+    width: 40%; 
+    border: 1px white;
+}
+
+p{
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    font-size: 75%;
+}
+
+.gradientCode{
+    height: 75px;
+    width: 270px;
+    color: black;
+    font-weight: 300;
+    font-size: 80%;
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 10px;;
+    background: rgb(210, 241, 232);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+img{
+    height: 25px;
+    color:white;
+}
+
+.arrow img:nth-child(2){
+    transform: rotate(45deg);
+}
+.arrow img:nth-child(3){
+    transform: rotate(90deg);
+}
+.arrow img:nth-child(4){
+    transform: rotate(135deg);
+}
+.arrow img:nth-child(5){
+    transform: rotate(180deg);
+}
+.arrow img:nth-child(6){
+    transform: rotate(225deg);
+}
+.arrow img:nth-child(7){
+    transform: rotate(270deg);
+}
+.arrow img:nth-child(8){
+    transform: rotate(310deg);
+}
+
+</style>
+<body>
+    <div>
+    <div class="title">
+        CSS Gradient Generator
+    </div>
+    <section id="container">
+        <div class="buttons">
+            <button class='myButton1'>#107cf6</button>
+            <button class='myButton2'>#ffffff</button>
+        </div>
+        <div class="arrow">
+            <img src=".\arrow.png">
+            <img src=".\arrow.png">
+            <img src=".\arrow.png">
+            <img src=".\arrow.png">
+            <img src=".\arrow.png">
+            <img src=".\arrow.png">
+            <img src=".\arrow.png">
+            <img src=".\arrow.png">
+
+        </div>
+        <p>click to copy the code!</p>
+        <div class="gradientCode">
+            background: linear-gradient(90deg, #107cf6 35%, #ffffff 100%);
+        </div>
+    </section>
+    </div>
+<script>
+
+    let btn1 = document.querySelector(".myButton1");
+    let btn2 = document.querySelector(".myButton2");
+    let gradientCode = document.querySelector(".gradientCode")
+
+    let rgb1 = '#107cf6';
+    let rgb2 = '#ffffff';
+
+    const hexGenerator = () => {
+        
+        let hexValues = "0123456789abcdef";
+
+        let hexBth1 = "#";
+
+        for(let i = 0; i<6; i++){
+            let randGenerator = hexValues[Math.floor(Math.random()*16)];
+            hexBth1 = hexBth1 + randGenerator;
+        }
+        return hexBth1;
+    }
+
+    const handleBtn1 = () => {
+        rgb1 = hexGenerator();
+        console.log(rgb1);
+        document.body.style.background=`linear-gradient(90deg, ${rgb1} 35%, ${rgb2} 100%)`;
+        btn1.textContent=rgb1;
+        gradientCode.textContent=`background: linear-gradient(90deg, ${rgb1} 35%, ${rgb2} 100%)`;
+    }
+
+    const handleBtn2 = () => {
+        rgb2 = hexGenerator();
+        console.log(rgb2);
+        document.body.style.background=`linear-gradient(90deg, ${rgb1} 35%, ${rgb2} 100%)`;
+        btn2.textContent=rgb2;
+        gradientCode.textContent=`background: linear-gradient(90deg, ${rgb1} 35%, ${rgb2} 100%)`;
+    }
+
+    btn1.addEventListener('click',handleBtn1);
+    btn2.addEventListener('click',handleBtn2);
+
+
+</script>
+</body>
+</html>
